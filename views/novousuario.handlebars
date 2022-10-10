@@ -1,0 +1,662 @@
+    <div class="container">
+        <header class="header">
+            <div class="caixa1" style="margin-left: 150px; margin-top: 10px;">
+                <i class="fa fa-minus-square-o" style="font-size:20px;"></i>
+                <i class="fa fa-minus-square-o" style="font-size:20px;"></i>
+            </div>
+            <div class="caixa2" style="margin-top: 10px;">
+                <span>'Nome do usuário'</span> 
+                <i class="fa fa-minus-square-o" style="font-size:20px;"></i>
+            </div>
+        </header>
+        <main class="main-content">
+            <div class="historico" style="margin-top: -6px; margin-bottom:2px;">
+                <span class="header-story" style="margin-left: 2px;">                           
+                <a href="index.php"> <small>Home</small> / </a>           
+                <a href="usuarios.php"> <small>Usuários </small> / </a>
+                <small>Edição</small>
+                </span> 
+            </div>
+            <div class="usuarios">
+                <h1>Usuários</h1>
+                <small>Cadastro e edição de usuários</small>
+            </div>
+            <div class="salvar-cancelar" style="margin-bottom: 10px;">
+                <div class="salvar">   
+                    <button id="btnSalvar" type="submit" onclick="btnSalvar()">              
+                    <i class="fa fa-bookmark-o" style="font-size:36px;"></i>
+                    <small>Salvar</small>
+                    </button>  
+                </div>
+                <div class="cancelar">   
+                    <button id="btnCancelar">
+                    <i class="fa fa-close" style="font-size:36px;"></i> 
+                    <small>Cancelar</small>
+                    </button>                                               
+                </div>
+            </div>
+            <div class="panel widget light-widget panel-bd-top">
+                <section class="col-md-12" id="section2" style="background-color: #FFF;">
+                    <div id="informacoesGerais">
+                        <h3 style="color: #C63131">Filtro</h3>
+                    </div>
+                    <br>
+                    <form id="form-cad-usuario" class="form-horizontal" method="POST" action="/cad">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="col-xs-3 col-form-label control-label">Nome</label>
+                                        <div class="controls col-xs-9">
+                                            <input class="form-control" id="nome" name="nome" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="col-xs-3 col-form-label control-label">Login</label>
+                                        <div class="controls col-xs-9">
+                                            <input class="form-control" id="login" name="login" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="col-xs-3 col-form-label control-label">CPF</label>
+                                        <div class="controls col-xs-9">
+                                            <input class="form-control" name="cpf" id="cpf" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="col-xs-3 col-form-label control-label">E-mail</label>
+                                        <div class="controls col-xs-9">
+                                            <input class="form-control" name="email" id="email" type="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="col-xs-3 col-form-label control-label">Senha</label>
+                                        <div class="controls col-xs-9">
+                                            <input class="form-control" name="senha" id="senha" type="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label class="col-xs-3 col-form-label control-label">Bloqueado</label>
+                                        <div class="controls col-xs-9">
+                                            <input class="" id="bloqueado" name="bloqueado" type="checkbox" value="Sim">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div id="btns" class="col-xs-12">
+                                    <button class="btn btn-pesquisar" type="submit">Cadastrar</button> 
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-md-12 panel-bd-top">
+                            <div class="div-tipos-setor">
+                                <div id="informacoesGerais">
+                                    <h3 style="color: #C63131">Perfil</h3>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label class="col-xs-4 col-form-label control-label">Perfil de usuário</label>
+                                        <div class="controls col-xs-8">
+                                            <select class="form-control" name="funcao" id="perfil-select" style="cursor: pointer; " onclick="aplicar()" onchange="selecionado()">
+                                                <option value="">Selecione</option>
+                                                <option value="">Cadastro</option>
+                                                <option value="">Auditoria Concorrente</option>
+                                                <option value="">Pagamento</option>
+                                                <option value="">Relatórios BI </option>
+                                                <option value="">Credenciamento</option>
+                                                <option value="">Atenção Integral a Saúde</option>
+                                                <option value="">Core</option>
+                                                <option value="">Relacionamento</option>
+                                                <option value="">Relatórios</option>
+                                                <option value="">Cobrança</option>
+                                                <option value="">Setup</option>
+                                                <option value="">Análise de Contas</option>
+                                                <option value="">Autorização</option>
+                                                <option value="">Atendimento</option>
+                                                <option value="">Editor de Regras</option>
+                                                <option value="">Faturamento</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div id="btns" class="col-xs-12">
+                                        <button class="btn btn-pesquisar" id="aplicar" type="submit" onclick="aplicar()">Aplicar</button>
+                                    </div>
+                                </div>
+                                <p id="demo"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <br>
+                        <div id="perfil-sistema" class="col-md-12 panel-bd-top">
+                            <div id="informacoesGerais">
+                                <h3 style="color: #C63131">Sistemas</h3>
+                            </div><br />
+                            <div id="cadastro">
+                                <span class="span-cadastro">Cadastro</span>
+                                <a href="javascript://" class="link-form"> <i class="fa fa-caret-square-o-down"></i> </a> 
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input perfis-cadastro" value="Cadastro - Analista de cadastro">
+                                <label>Analista de cadastro</label> 
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input perfis-cadastro" value="Cadastro - Administrador">
+                                <label>Administrador</label> 
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input perfis-cadastro" value="Cadastro - Consulta cadastro online">
+                                <labell>Consulta cadastro online</labell>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input perfis-cadastro" value="Cadastro - Consulta">
+                                <label>Consulta</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input perfis-cadastro" value="Cadastro - Gestor">
+                                <label>Gestor</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="auditoriaConcorrente">
+                                <span class="span-cadastro">Auditoria Concorrente</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input auditoria-concorrente" value="Auditoria Concorrente- Criador">
+                                <label>Criador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input auditoria-concorrente" value="Auditoria Concorrente - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input auditoria-concorrente" value="Auditoria Concorrente - Prestador">
+                                <label>Prestador</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="pagamento">
+                                <span class="span-cadastro">Pagamento</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input pagamento" value="Pagamento - Validação de Glosas">
+                                <label>Validação de Glosas</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input pagamento" value="Pagamento - Pagamento">
+                                <label>Pagamento</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input pagamento" value="Pagamento - Aprovação">
+                                <label>Aprovação</label>
+                                </label>
+                                <br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input pagamento" value="Pagamento - Contas Médicas">
+                                <label>Contas Médicas</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input pagamento" value="Pagamento - Protocolo">
+                                <label>Protocolo</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input pagamento" value="Pagamento - Mestre">
+                                <label>Mestre</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input pagamento" value="Pagamento - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input pagamento" value="Pagamento - Consultar Pagamento">
+                                <label>Consultar Pagamento</label>
+                                </label>
+                                </div>
+                                <br />
+                            </div>
+                            <hr>
+                            <div id="relatoriosBI">
+                                <span class="span-cadastro">Relatórios BI</span> 
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input relatorios-bi" value="Relatórios BI - Usuário">
+                                <label>Usuário</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input relatorios-bi" value="Relatórios BI - Administrador">
+                                <label>Administrador</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="credenciamento">
+                                <span class="span-cadastro">Credenciamento</span> 
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input credenciamento" value="Credenciamento - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input credenciamento" value="Credenciamento - Operadora">
+                                <label>Operadora</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input credenciamento" value="Credenciamento - Prestador">
+                                <label>Prestador</label>
+                                </label>
+                                </div>
+                                <br>
+                            <hr>
+                            <div id="ais">
+                                <span class="span-cadastro">Atenção Integral a Saúde</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input ais" value="AIS - Agendador">
+                                <label>Agendador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input ais" value="AIS - Beneficiário">
+                                <label>Beneficiário</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input ais" value="AIS - Supervisor">
+                                <label>Supervisor</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input ais" value="AIS - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input ais" value="AIS - Atendente">
+                                <label>Atendente</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input ais" value="AIS - Atendente - Liberar Atendimentos">
+                                <label>Atendente - Liberar Atendimentos</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="core">
+                                <span class="span-cadastro">Core</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input core" value="Core - Administrador">
+                                <label>Administrador</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="relacionamento">
+                                <span class="span-cadastro">Relacionamento</span>   
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input relacionamento" value="Relacionamento - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input relacionamento" value="Relacionamento - Atendente">
+                                <label>Atendente</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input relacionamento" value="Relacionamento - Backoffice">
+                                <label>Backoffice</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input relacionamento" value="Relacionamento - Gestor da Area de Negocios">
+                                <label>Gestor da Area de Negocios</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="relatorios">
+                                <span class="span-cadastro">Relatórios</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input relatorios" value="Relatórios - Criador">
+                                <label>Criador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input  name="visDados[]" type="checkbox" class="form-check-input relatorios" value="Relatórios - Vizualizador">
+                                <label>Vizualizador</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="cobranca">
+                                <span class="span-cadastro">Cobrança</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input cobranca" value="Cobrança - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input cobranca" value="Cobrança - Gestor">
+                                <label>Gestor</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="setup">
+                                <span class="span-cadastro">Setup</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input setup" value="Setup - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input setup" value="Setup - Usuário">
+                                <label>Usuário</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input setup" value="Setup - SSO Usuário">
+                                <label>SSO Usuário</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="analiseDeContas">
+                                <span class="span-cadastro">Análise de Contas</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input analise-de-contas" value="Análise de Contas - Auditor">
+                                <label>Auditor</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input analise-de-contas" value="Análise de Contas - Operadora">
+                                <label>Operadora</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input analise-de-contas" value="Análise de Contas - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input analise-de-contas" value="Análise de Contas - Prestador">
+                                <label>Prestador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input analise-de-contas" value="Análise de Contas - Visualização">
+                                <label>Visualização</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input analise-de-contas" value="Análise de Contas - Analista">
+                                <label>Analista</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input analise-de-contas" value="Análise de Contas - Gestor">
+                                <label>Gestor</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="autorizacao">
+                                <span class="span-cadastro">Autorização</span>  
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Biometria">
+                                <label>Biometria</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Consulta">
+                                <label>Consulta</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Cadastro de Prestador">
+                                <label>Cadastro de Prestador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Médico">
+                                <label>Médico</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Gestor">
+                                <label>Gestor</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Gestão da Autorização">
+                                <label>Gestão da Autorização</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Auditor">
+                                <label>Auditor</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Solicitante">
+                                <small>Solicitante</small>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Intercorrência">
+                                <label>Intercorrência</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input autorizacao" value="Autorização - Analista">
+                                <label>Analista</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="atendimento">
+                                <span class="span-cadastro">Atendimento</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input atendimento" value="Atendimento - Agendamento">
+                                <label>Agendamento</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input atendimento" value="Atendimento - Médico Solicitante">
+                                <label>Médico Solicitante</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input atendimento" value="Atendimento - Prestador">
+                                <label>Prestador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input atendimento" value="Atendimento - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input atendimento" value="Atendimento - Leitura de Biometria">
+                                <label>Leitura de Biometria</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input atendimento" value="Atendimento - Execução de Guias">
+                                <label>Execução de Guias</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="editorDeRegras">
+                                <span class="span-cadastro">Editor de Regras</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input editor-de-regras" value="Editor de Regras - Desenvolvedor">
+                                <label>Desenvolvedor</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input editor-de-regras" value="Editor de Regras - Analista">
+                                <label>Analista</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input editor-de-regras" value="Editor de Regras - Gerente">
+                                <label>Gerente</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input editor-de-regras" value="Editor de Regras - Administrador">
+                                <label>Administrador</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                            <hr>
+                            <div id="faturamento">
+                                <span class="span-cadastro">Faturamento</span>
+                                <a href="javascript://" class="link-form"><i class="fa fa-caret-square-o-down"></i></a>
+                                <div class="papeis">
+                                <h4>Papeis</h4>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input faturamento" value="Faturamento - Administrador">
+                                <label>Administrador</label>
+                                </label><br>
+                                <label class="form-check-label">
+                                <input name="visDados[]" type="checkbox" class="form-check-input faturamento" value="Faturamento - Consig">
+                                <label>Consig</label>
+                                </label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+        <aside class="side-bar">
+            <div class="navbar-tabs-menu">
+                <div class="navbar-menu">
+                    <h1 style="padding-top: 12px; margin-left: 12px; color:#FFF;">Setup</h1>
+                    <ul>
+                        <li class="li-p">       
+                            <a class="bt5 sub-btn" href="usuarios.html">
+                                <span class="icon"><i class="fa fa-address-card"></i></span>
+                                <span>Usuários</span>
+                            </a>
+                        </li> 
+    
+                        <li class="li-p">       
+                            <a class="bt4 sub-btn" href="tipousuario.html">
+                                <span class="icon"><i class="fa fa-list-ul"></i></span>
+                                <span>Tipo de usuário</span>
+                            </a>
+                        </li> 
+    
+                        <li class="li-p">       
+                            <a class="bt3 sub-btn" href="setor.html">
+                                <span class="icon"><i class="fa fa-briefcase"></i></span>
+                                <span>Setor</span>
+                            </a>
+                        </li>
+                        
+                        <li class="li-p"> 
+                            <a class="bt1 sub-btn" href="funcao.html">
+                                <span class="icon"><i class="fa fa-sitemap"></i></span>
+                                <span>Função</span>
+                            </a>
+                        </li>
+                        
+                        <li class="li-p">
+                            <a class="bt2 sub-btn" href="perfilusuario.html">
+                                <span class="icon"><i class="fa fa-sitemap"></i></span>
+                                <span>Perfil de Usuário</span>
+                            </a>
+                        </li>
+                    </ul>
+                                
+                    <div class="navbar-spacing clearfix"></div>
+                    <div class="menu_sair side-bar navbar-menu">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fa fa-arrow-circle-down"></i></span>
+                                <span>Sair</span>
+                            </a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <div class="mobile-menu">
+            <input id="menu__toggle" type="checkbox">
+            <label class="menu__btn" for="menu__toggle">
+            <span></span>
+            </label>
+            <ul class="menu__box" style="background-color: #e5e5e5e0;">
+                <li class="menu__item" style="background-color: #e5e5e5e0;">
+                    <a href="funcao.html" class="menu__item  nav-link sub-btn">Função</a>
+                </li>
+                <li class="menu__item">
+                    <a href="perfilusuario.html" class="menu__item sub-btn">Perfil de Usuário</a>              
+                </li>
+                <li class="menu__item">
+                    <a href="setor.html" class="menu__item sub-btn">Setor</a>
+                </li>
+                <li class="menu__item">
+                    <a href="tipousuario.html" class="menu__item sub-btn">Tipos de Usuário</a>
+                </li>
+                <li class="menu__item">
+                    <a href="usuarios.html" class="menu__item sub-btn">Usuário</a>
+                </li>
+                <li class="menu__item">
+                    <a href="log.html" class="menu__item sub-btn">Log</a>
+                </li>
+                <li class="menu__item" >
+                    <a href="index.html" class="menu__item">Sair</a>
+                </li>
+            </ul>
+        </div>
+        <footer class="footer">  
+            <small style="margin-left: 10px;">Setup 4.39.4 - Desenvolvido por Qualirede - <a href="" style="color: #C63131;">http://www.qualirede.com.br</a> </small>
+        </footer>
+    </div>

@@ -1,80 +1,68 @@
-/*
-//Conexao com BD MySQL
-const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'cadastro'
-});
-
-connection.connect(function(err){
-    if (err) console.error('Erro ao realizar a conexão com BD: ' + err.stack); return;
-});
-
-connection.query("INSERT INTO users(bloqueado, nome, email ,login ,senha,cpf, perfis) VALUES ('Não','Kelly', 'kelly@celke.com.br', 'kelly.celke', 'ghdgg', '3868', 'Desenvolvedora')",function(err, result){
-    if(!err){
-        console.log('Usuario cadastrado com sucesso!');
-    }else{
-        console.log('Erro ao cadastra o usuario!');
-    }
-});
-*/
-
-/*
-const Sequelize = require('sequelize')
-
-const sequelize = new Sequelize ('cadastro', 'root' , '', {
-    host:'localhost',
-    dialect: 'mysql'
-})
-
-sequelize.authenticate().then(function() {
-    console.log('conexão com sucesso')
-}).catch(function(err) {
-    console.log('erro de conexao '+err)
-})
-
-const User = sequelize.define('cadastros',{
-    id: {
-        type: Sequelize.INTEGER
-    },
-    bloqueado:{
-        type:Sequelize.STRING
-    },
-    nome:{
-        type:Sequelize.STRING
-    },
-    email:{
-        type:Sequelize.STRING
-    },
-    login:{
-        type:Sequelize.STRING
-    },
-    senha:{
-        type:Sequelize.STRING
-    },
-    cpf:{
-        type:Sequelize.STRING
-    },
-    perfis:{
-        type:Sequelize.STRING
-    },
-})
-*/
-
 const express = require('express');
-const { engine } = require ('express-handlebars');
-
 const app = express();
 
+const moment = require('moment')
+
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
+
+const Cadastro = require('./models/Cadastro')
+
+/*
+const handlebars =  require('express-handlebars')
+app.engine('handlebars', handlebars({
+    defaultLayout: 'main'
+}))
+app.set('view engine', 'handlebars')
+*/
+
+const {engine} = require('express-handlebars')
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set("views", "./views");
 
-app.get('/cadastro', (req, res) => {
-    res.render('form de cadastro');
+
+
+//css
+app.use('/css', express.static(__dirname + '/css'))
+
+app.get('/index', (req, res) => {
+    res.render('index');
+});
+
+app.get('/log', (req, res) => {
+    Cadastro.findAll().then(function(cadastros){
+        res.render('log', {cadastros: cadastros} );
+    })
+});
+
+app.get('/novousuario', (req, res) => {
+   res.render('novousuario');
+}); 
+
+app.post('/cad', (req, res) => {
+  // res.send('Nome: ' + req.body.nome + '<br> Login: ' + req.body.login + '<br> CPF: ' 
+ //  + req.body.cpf + '<br> E-mail: ' + req.body.email + '<br> Senha: ' + req.body.senha + '<br> Bloqueado: ' + req.body.bloqueado + '<br> Perfis: ' + req.body.perfis) 
+ Cadastro.create({
+    nome: req.body.nome ,
+    login: req.body.login ,
+    cpf: req.body.cpf ,
+    email: req.body.email ,
+    senha: req.body.senha ,
+    bloqueado: req.body.bloqueado ,
+    perfis: req.body.perfis
+ }).then(function(){
+    res.redirect('/log')
+    //res.send('CADASTRADO COM SUCESSO')
+ }).catch(function(){
+    res.send('ERRO' + erro)
+ })
+
+});
+
+app.get('/novosetor', (req, res) => {
+    res.render('novosetor');
 });
 
 
